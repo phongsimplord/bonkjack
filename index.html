@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyển đổi ảnh</title>
+    <style>
+        #image {
+            width: 300px; /* Chiều rộng ảnh */
+            height: auto; /* Chiều cao tự động */
+        }
+        #counter {
+            font-size: 20px; /* Kích thước chữ cho số lần gõ */
+        }
+    </style>
+</head>
+<body>
+    <div id="counter">Số lần gõ: 0</div>
+    <img id="image" src="image1.jpg" alt="Image 1">
+
+    <script>
+        let count = 0;
+        const images = ['1.png', '2.png']; // Danh sách ảnh
+        const imageElement = document.getElementById('image');
+        const counterElement = document.getElementById('counter');
+
+        document.addEventListener('keypress', () => {
+            count++;
+            counterElement.textContent = `Số lần gõ: ${count}`;
+
+            // Thay đổi ảnh
+            const currentImageIndex = count % images.length;
+            imageElement.src = images[currentImageIndex];
+        });
+    </script>
+</body>
+</html>
