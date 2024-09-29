@@ -20,7 +20,7 @@
             text-align: center;
         }
         #image {
-            width: 500px;
+            width: 300px;
             height: auto;
             margin-top: 20px;
         }
@@ -43,25 +43,24 @@
 
     <script>
         let count = 0;
-        let pressCount = 0; // Đếm số lần nhấn nút
-        const images = ['1.png', '2.png'];
+        const images = ['1.png', '2.png']; // Ảnh 1 là người cầm gậy, Ảnh 2 là người vung gậy
         const imageElement = document.getElementById('image');
         const counterElement = document.getElementById('counter');
         const buttonElement = document.getElementById('button');
 
-        // Thay đổi logic khi bấm nút
+        // Khi nhấn nút "Đánh"
         buttonElement.addEventListener('click', () => {
-            pressCount++;
+            // Chuyển sang ảnh 2 (vung gậy)
+            imageElement.src = images[1];
 
-            // Tăng bộ đếm khi số lần nhấn là lẻ
-            if (pressCount % 2 !== 0) {
-                count++;
-                counterElement.textContent = `Nhấn nút để gõ Jack - Số lần gõ: ${count}`;
-                
-                // Thay đổi ảnh
-                const currentImageIndex = count % images.length;
-                imageElement.src = images[currentImageIndex];
-            }
+            // Tăng bộ đếm và cập nhật hiển thị số lần gõ
+            count++;
+            counterElement.textContent = `Nhấn nút để gõ Jack - Số lần gõ: ${count}`;
+
+            // Sau 500ms, chuyển lại ảnh 1 (cầm gậy)
+            setTimeout(() => {
+                imageElement.src = images[0];
+            }, 500); // Thời gian chuyển ảnh 2 trở về ảnh 1 là 500ms
         });
     </script>
 </body>
