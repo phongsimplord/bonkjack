@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuyển đổi ảnh</title>
+    <!-- Thêm Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -12,39 +14,49 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Màu nền sáng */
         }
         .container {
             text-align: center;
         }
         #image {
-            width: 300px; /* Chiều rộng ảnh */
-            height: auto; /* Chiều cao tự động */
-            margin-top: 20px; /* Khoảng cách giữa văn bản và ảnh */
+            width: 300px;
+            height: auto;
+            margin-top: 20px;
         }
         #counter {
-            font-size: 20px; /* Kích thước chữ cho số lần gõ */
+            font-size: 20px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="counter">Nhấn nút bất kì để gõ Jack - Số lần gõ: 0</div>
+        <div id="counter">Nhấn nút để gõ Jack - Số lần gõ: 0</div>
         <img id="image" src="1.png" alt="Image 1">
+        <button id="button" class="btn btn-primary mt-3">Đánh</button> <!-- Nút sử dụng Bootstrap -->
     </div>
 
     <script>
         let count = 0;
-        const images = ['1.png', '2.png']; // Danh sách ảnh
+        let pressCount = 0; // Đếm số lần nhấn nút
+        const images = ['1.png', '2.png'];
         const imageElement = document.getElementById('image');
         const counterElement = document.getElementById('counter');
+        const buttonElement = document.getElementById('button');
 
-        document.addEventListener('keypress', () => {
-            count++;
-            counterElement.textContent = `Nhấn nút bất kì để gõ Jack - Số lần gõ: ${count}`;
-
-            // Thay đổi ảnh
-            const currentImageIndex = count % images.length;
-            imageElement.src = images[currentImageIndex];
+        // Thay đổi logic khi bấm nút
+        buttonElement.addEventListener('click', () => {
+            pressCount++;
+            
+            if (pressCount % 2 === 0) { // Chỉ tăng khi ấn 2 lần
+                count++;
+                counterElement.textContent = `Nhấn nút để gõ Jack - Số lần gõ: ${count}`;
+                
+                // Thay đổi ảnh
+                const currentImageIndex = count % images.length;
+                imageElement.src = images[currentImageIndex];
+            }
         });
     </script>
 </body>
