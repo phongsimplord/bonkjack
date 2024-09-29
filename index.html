@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chuyển đổi ảnh</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
         #image {
             width: 300px; /* Chiều rộng ảnh */
             height: auto; /* Chiều cao tự động */
+            margin-top: 20px; /* Khoảng cách giữa văn bản và ảnh */
         }
         #counter {
             font-size: 20px; /* Kích thước chữ cho số lần gõ */
@@ -15,8 +27,10 @@
     </style>
 </head>
 <body>
-    <div id="counter">Nhấn nút bất kì để gõ Jack - Số lần gõ: 0</div>
-    <img id="image" src="1.png" alt="Image 1">
+    <div class="container">
+        <div id="counter">Nhấn nút bất kì để gõ Jack - Số lần gõ: 0</div>
+        <img id="image" src="1.png" alt="Image 1">
+    </div>
 
     <script>
         let count = 0;
